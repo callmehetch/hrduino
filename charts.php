@@ -29,7 +29,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php">Mess Tracker</a>
+      <a class="navbar-brand mr-1" href="index.php">Smar Water Monitoring System</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -112,19 +112,19 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Area Chart</div>
+              Daily Charts</div>
             <div class="card-body">
               <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
             <div class="card-footer small text-muted">Updated 5 secs ago</div>
           </div>
-
+         
           <div class="row">
             <div class="col-lg-8">
               <div class="card mb-3">
                 <div class="card-header">
                   <i class="fas fa-chart-bar"></i>
-                  Bar Chart</div>
+                  Weekly Charts</div>
                 <div class="card-body">
                   <canvas id="myBarChart" width="100%" height="50"></canvas>
                 </div>
@@ -195,8 +195,7 @@ function refreshPage(){
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
 
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 

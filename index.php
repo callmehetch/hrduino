@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>IIITDM Mess</title>
+    <title>IIITDM SWMS</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,14 +22,16 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-
+<script>
+document.getElementById("temp").innerHTML = Math.floor(Math.random() * 10);
+</script>
   </head>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php">Mess Tracker</a>
+      <a class="navbar-brand mr-1" href="index.php">Smart Water Monitoring System</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -130,7 +132,7 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">Floor 1 : </div>
+                  <div class="mr-5">Humidity : <span style="font-size: 200%">58%</span></div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                  
@@ -143,7 +145,7 @@
                   <div class="card-body-icon">
                      <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">Floor 2 :</div>
+                  <div class="mr-5">Temperature : <span style="font-size: 200%" >32 c</span></div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                  
@@ -156,7 +158,7 @@
                   <div class="card-body-icon">
                      <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">Floor 3 :</div>
+                  <div class="mr-5">Moisture: <span style="font-size: 200%"><p id="temp">0.3 VMC</p></span></div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   
@@ -191,56 +193,7 @@
          
       
          
-         
-         
-         <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "hemanth";
-    $dbname = "mess";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-
-    $sql = "UPDATE visitors SET visits = visits+1 WHERE uid = 9";
-    $conn->query($sql);
-            
-            
-            
-            $sql = "UPDATE visitors SET breakfast = breakfast+1 WHERE uid = 9";
-            $conn->query($sql);
-
-    $sql = "SELECT visits FROM `visitors` WHERE uid = 9";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $visits = $row["visits"];
-        }
-    } else {
-        echo "no results";
-    }
-    
-    $conn->close();
-?>
-                 <?php
-// create a new cURL resource
-$ch = curl_init();
-
-         $url = "https://api.thingspeak.com/update?api_key=1GEQCK4R5OZ4OKXH&field1=$visits";
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, "$url");
-curl_setopt($ch, CURLOPT_HEADER, 0);
-
-// grab URL and pass it to the browser
-curl_exec($ch);
-
-// close cURL resource, and free up system resources
-curl_close($ch);
-?>
-    
+  
          
           <!-- DataTables Example -->
           <div class="card mb-3">
@@ -251,13 +204,13 @@ curl_close($ch);
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
-                      <th>Sl.No :</th>
+                  <tr>
+                    <th>Sl.No :</th>
                       <th>Date: </th>
                       <th>Day:</th>
-                      <th>Breakfast:</th>
-                      <th>Lunch:</th>
-                      <th>Dinner:</th>
+                      <th>Avg. Soil Moisture(VWC):</th>
+                      <th>Min. Temp( C):</th>
+                      <th>Water Supplied(lts):</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -265,9 +218,9 @@ curl_close($ch);
                     <th>Sl.No :</th>
                       <th>Date: </th>
                       <th>Day:</th>
-                      <th>Breakfast:</th>
-                      <th>Lunch:</th>
-                      <th>Dinner:</th>
+                      <th>Avg. Soil Moisture:</th>
+                      <th>Min. Temp:</th>
+                      <th>Water Supplied(lts):</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -340,7 +293,7 @@ curl_close($ch);
                       <td>9</td>
                       <td>17/11/2018</td>
                       <td>Saturday</td>
-                      <td><?php echo $visits ; ?></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                     </tr>
